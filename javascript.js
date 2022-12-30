@@ -1,24 +1,22 @@
 game();
 
 function getPlayerChoice(){
-    // Ask player for their selection and format selection 
-    let player_selection = prompt("Rock, paper, or scissors?");
-    player_selection = player_selection.toLowerCase();
-    let validChoice = false;
-
     // Ask for valid input until user complies 
-    if (player_selection !== "rock" || player_selection != "paper" || player_selection != "scissors")
-    {
-        while (validChoice === false)
-        {    
-            console.log("Please pick 'rock', 'paper', or 'scissors'!");
-            player_selection = prompt("Rock, paper, or scissors?").toLowerCase;
+
+    while (true)
+    {    
+        console.log("Please pick 'rock', 'paper', or 'scissors'!");
+
+        let player_selection = prompt("Rock, paper, or scissors?");
+        player_selection = player_selection.toLowerCase();
         
-            if (player_selection !== "rock" || player_selection != "paper" || player_selection != "scissors")
-            {
-                validChoice = true;
-            }
+        if (player_selection === "rock" || player_selection === "paper" || player_selection === "scissors")
+        {
+            return player_selection;
+            break;
         }
+
+        console.log(`"${player_selection}" is not a valid choice!`);
     }
 }
 
@@ -50,7 +48,7 @@ function playRound(playerSelection, computerSelection){
         console.log("You Lose! Scissors beats Paper");
         return "loss";
     }
-    else if (playerSelection === 'rock' & computerSelection === 'Scissors'){
+    else if (playerSelection === 'rock' & computerSelection === 'scissors'){
         console.log("You Win! Rock beats scissors");
         return "win";
     }
@@ -73,10 +71,20 @@ function game(){
     let computerWins = 0;
 
     for (let i = 0; i < 5; i++){
+        
+        // Get computer choice
         let computerChoice = getComputerChoice();
+        
+        // Get player choice
         let playerChoice = getPlayerChoice();
+        
+        // Print results of round
+        console.log(`Round ${i +1}:`);
+
+        // Play  1 round and print results
         let result = playRound(playerChoice, computerChoice);
 
+        // Keep track of score
         if (result === "win"){
             playerWins++;
         }
@@ -84,17 +92,17 @@ function game(){
         else if (result === "loss"){
             computerWins++;
         }
-
-        if (playerWins === 3 || computerWins === 3){
-            break;
-        }
     }
 
     if (playerWins > computerWins){
-        console.log("Congratulations! You are the rock paper scissors champion!");
+        console.log(`Congratulations! You are the rock, paper, scissors champion! The score was Player: ${playerWins} to Computer: ${computerWins}`);
     }
 
     if (playerWins < computerWins){
-        console.log("Better luck next time loser!");
+        console.log(`Better luck next time loser! The score was Player: ${playerWins} to Computer: ${computerWins}`);
+    }
+
+    else{
+        console.log(`No one wins! The score was Player: ${playerWins} to Computer: ${computerWins}`);
     }
 }
