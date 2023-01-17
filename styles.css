@@ -10,13 +10,10 @@ body{
 }
 
 .header{
-    display: flex;
-    flex: initial;
-    justify-content: center;
+    text-align: center;
     background-color: #a9792b;
     color: #f6f9ff;
     min-width: 100vw;
-
     margin-top: 0px;
     padding: 10px;
 }
@@ -30,14 +27,16 @@ body{
     gap: 75px;
 }
 
+/* Styling for the Buttons */
+
 .buttons{
     display: flex;
     align-items: center;
     justify-content: space-evenly;
     gap: 100px;
+    transition: all .07s ease;
 }
 
-/* Add Style to the choice buttons */
 button{
     min-width: 155px;
     min-height: 50px;
@@ -48,15 +47,26 @@ button{
     border-style: solid;
     border-width: 3px;
     position: relative;
-
+    cursor: pointer;
 
 }
 
-button:hover{
+button:hover:enabled{
     color: white;
     background-color: #a9792b;
     top: -10px;
 }
+
+button:active{
+    transform: scale(0.9);
+}
+
+button:disabled{
+  border: 1px solid #999999;
+  background-color: #cccccc;
+  color: #666666;
+}
+/* End of Button Styling */
 
 .results{
     font-size: 24px;

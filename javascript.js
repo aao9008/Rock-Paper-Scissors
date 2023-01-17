@@ -8,9 +8,12 @@ const computerScore = document.querySelector('#computer');
 let playerWins = 0;
 let computerWins = 0;
 
-// This event listner will play one round of the game when a choice is clicked on 
+// This event listener will play one round of the game when a choice is clicked on 
 buttons.forEach(button =>{
-    button.addEventListener('click', () => playRound(button.value))
+    button.addEventListener('click',function(){
+        button.classList.add("clicked");
+        playRound(button.value);
+    })
 });
 
 // This function will disable the buttons once end game conditions have been met. 
@@ -32,7 +35,7 @@ function getComputerChoice(){
 }
 
 function playRound(playerChoice){
-    let playerSelection = playerChoice
+    let playerSelection = playerChoice;
     let computerSelection = getComputerChoice();
 
     // Compare player selection to computer selection and declare winner
