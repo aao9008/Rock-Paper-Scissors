@@ -1,13 +1,23 @@
 // Select all choice buttons 
 const buttons = document.querySelectorAll('.choice');
+const results = document.querySelector('.results');
+const playerScore = document.querySelector('#player');
+const computerScore = document.querySelector('#computer');
 
-function getPlayerChoice(){
-    // Ask for valid input until user complies 
-    buttons.forEach(button => button.addEventListener("click", function(){
-        let playerSelection = button.value;
-        return playerSelection;
-    }));
-}
+// Initialize score board
+let playerWins = 0;
+let computerWins = 0;
+
+// This event listner will play one round of the game when a choice is clicked on 
+buttons.forEach(button =>{
+    button.addEventListener('click', () => playRound(button.value))
+});
+
+// This function will disable the buttons once end game conditions have been met. 
+function disableButtons() {
+    buttons.forEach(elem => {
+        elem.disabled = true
+    })}
 
 function getComputerChoice(){
     // Create list of options
@@ -21,49 +31,59 @@ function getComputerChoice(){
     return choice;
 }
 
-function playRound(playerSelection){
+function playRound(playerChoice){
+    let playerSelection = playerChoice
     let computerSelection = getComputerChoice();
-
-    let playerWins = 0;
-    let computerWins = 0;
 
     // Compare player selection to computer selection and declare winner
     if (playerSelection === computerSelection){
-        console.log(`It's a draw! ${playerSelection} does not beat ${computerSelection}`);
+        results.textContent = `It's a draw! ${playerSelection} does not beat ${computerSelection}, so no one gets any points!`;
     }
     
     else if (playerSelection === 'paper' & computerSelection === 'rock'){
-        console.log("You Win! Paper beats Rock");
+        results.textContent = "You Win! Paper beats Rock";
         playerWins++;
+        playerScore.textContent = playerWins;
     }
 
     else if (playerSelection === 'paper' & computerSelection === 'scissors'){
-        console.log("You Lose! Scissors beats Paper");
+        results.textContent = "You Lose! Scissors beats Paper";
         computerWins++;
+        computerScore.textContent = computerWins;
     }
     else if (playerSelection === 'rock' & computerSelection === 'scissors'){
-        console.log("You Win! Rock beats scissors");
+        results.textContent = "You Win! Rock beats scissors";
         playerWins++;
+        playerScore.textContent = playerWins;
+
     }
     else if (playerSelection === 'rock' & computerSelection === 'paper'){
-        console.log("You Lose! Paper beats Rock");
+        results.textContent = "You Lose! Paper beats Rock";
         computerWins++;
+        computerScore.textContent = computerWins;
+
     }
     else if (playerSelection === 'scissors' & computerSelection === 'paper'){
-        console.log("You Win! Scissors beats Paper");
+        results.textContent = "You Win! Scissors beats Paper";
         playerWins++;
+        playerScore.textContent = playerWins;
+
     }
     else if (playerSelection === 'scissors' & computerSelection === 'rock'){
-        console.log("You Lose! Rock beats Paper");
+        results.textContent = "You Lose! Rock beats Paper";
         computerWins++;
+        computerScore.textContent = computerWins;
+
     }
 
     // Check for end game conditions 
-    if (playerWins = 5){
-        console.log(`Congratulations! You are the rock, paper, scissors champion! The score was Player: ${playerWins} to Computer: ${computerWins}`);
+    if (playerWins === 5){
+        results.textContent = `Congratulations! You are the rock, paper, scissors champion! Reload the page to play again!`;
+        disableButtons();
     }
 
-    else if (computerWins = 5){
-        console.log(`Better luck next time loser! The score was Player: ${playerWins} to Computer: ${computerWins}`);
+    else if (computerWins === 5){
+        results.textContent = `GAME OVER! Better luck next time loser! Reload the page to play again!`;
+        disableButtons();
     }
 }
