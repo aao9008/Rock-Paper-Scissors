@@ -1,3 +1,9 @@
+*{
+    font-family: CopperPlate, fantasy;
+    background-color: #6700ff;
+    color: white;
+}
+
 body{
     margin: 0px;
     padding: 0px;
@@ -11,10 +17,12 @@ body{
 
 .header{
     text-align: center;
-    background-color: #a9792b;
+    font-style: oblique;
+    background-color: #f500ff;
     color: #f6f9ff;
     min-width: 100vw;
     margin-top: 0px;
+    margin-bottom: 0px;
     padding: 10px;
 }
 
@@ -42,8 +50,8 @@ button{
     min-height: 50px;
     background-color: #f6f9ff;
     border-radius: 10px;
-    border-color: #a9792b;
-    color:#a9792b;
+    border-color: #f500ff;
+    color:#f500ff;
     border-style: solid;
     border-width: 3px;
     position: relative;
@@ -53,7 +61,7 @@ button{
 
 button:hover:enabled{
     color: white;
-    background-color: #a9792b;
+    background-color: #f500ff;
     top: -10px;
 }
 
@@ -70,7 +78,8 @@ button:disabled{
 
 .results{
     font-size: 24px;
-    border-color:#a9792b;
+    border-color:#f500ff;
+    background-color: #8a00ff;
     border-width: 6px;
     border-style: solid;
     border-radius: 10px;
@@ -80,6 +89,7 @@ button:disabled{
     padding: 20px;
 }
 
+/* Add styling to the scoreCards */
 .scores{
     display: flex;
     justify-content: center;
@@ -91,7 +101,7 @@ button:disabled{
     display: flex;
     flex-direction: column;
     border-style: solid;
-    border-color: #a9792b;
+    border-color: #f500ff;
     border-radius: 10px;
     border-width: 3px;
     min-width: 110px;
@@ -105,11 +115,12 @@ button:disabled{
     flex: 1;
     align-items: center;
     justify-content: center;
-    border-bottom: #a9792b;
+    border-bottom: #f500ff;
+    border-radius: 10px;
 }
 
 .playerBanner, .computerBanner{
     color: #f6f9ff;
-    background-color: #a9792b;
+    background-color: #f500ff;
     padding: 3px;
 }
